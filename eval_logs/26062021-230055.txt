@@ -1,0 +1,22 @@
+----- Evaluation of Neural Network #26062021-230055 -----
+Absolute Evaluation Loss: 2060235.25
+
+Example Predictions:
+Prediction for EIN 362754650: 1176420.125 | Label: 2226546
+Prediction for EIN 161518142: 36961.984375 | Label: 62143
+Prediction for EIN 521409133: 144449.171875 | Label: 339151
+Prediction for EIN 232493677: 90067.8046875 | Label: 51835
+Prediction for EIN 521628303: 95729.8828125 | Label: -79368
+Prediction for EIN 562074393: 20654.669921875 | Label: 4846
+Prediction for EIN 237368085: 1369892.375 | Label: 145149
+Prediction for EIN 134254191: 6876146.0 | Label: 8935811
+Prediction for EIN 274868296: 421202.28125 | Label: 34129
+Prediction for EIN 454346778: 34400.83203125 | Label: 59472
+
+Training log for backreference...
+----- Training Neural Net #26062021-230055 with shape (20, 16, 10, 6) -----
+Pre-training Loss: 93768808.0
+Network reached epoch #15. Loss: 3114915.75
+Network reached epoch #30. Loss: 3075845.5
+Ended (slow improvement) at epoch 40
+----------- [!] Training Complete - Final Loss: 3041550.0 -----------

@@ -1,0 +1,11 @@
+----- Training Neural Net #26062021-210048 with shape (24, 20, 16, 9, 6) -----
+Pre-training Loss: 6079487.0
+Network reached epoch #10. Loss: 3039560.75
+Network reached epoch #20. Loss: 3039019.0
+Network reached epoch #30. Loss: 2972481.5
+Network reached epoch #40. Loss: 2951430.0
+Network reached epoch #50. Loss: 2926125.25
+Network reached epoch #60. Loss: 2906955.0
+Network reached epoch #70. Loss: 2883496.75
+Ended (slow improvement) at epoch 73
+----------- [!] Training Complete - Final Loss: 2917983.25 -----------

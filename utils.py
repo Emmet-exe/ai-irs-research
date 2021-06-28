@@ -16,3 +16,6 @@ def zeroint(s):
     if len(s) == 0:
         return 0
     return int(s)
+
+def strround(num):
+    return str(round(num * 1000) / 1000.0)

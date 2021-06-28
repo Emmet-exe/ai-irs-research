@@ -11,6 +11,7 @@ EPOCH_CAP = 300
 NETWORK_SHAPE = [20, 16, 10, 6]
 SLOW_IMPROVEMENT_THRESHOLD = 1.006
 ACTIVATION = None
+OUT_ACTIVATION = None
 
 # create the neural network
 def createNN(seedNum, inputNum):
@@ -22,7 +23,7 @@ def createNN(seedNum, inputNum):
     model.add(Dense(NETWORK_SHAPE[0], activation=ACTIVATION, kernel_initializer="he_normal", input_shape=(inputNum,)))
     for i in range (1, len(NETWORK_SHAPE)):
         model.add(Dense(NETWORK_SHAPE[i], activation=ACTIVATION, kernel_initializer="he_normal"))
-    model.add(Dense(1))
+    model.add(Dense(1, activation = OUT_ACTIVATION))
     model.compile(loss="mean_absolute_error", optimizer="adam")
     return model
 
@@ -85,7 +86,7 @@ class MonitorNN(keras.callbacks.Callback):
 def train(nn, nnid, inputs, labels):
     # train the model
     monitor = MonitorNN(nn, nnid, inputs, labels)
-    history = nn.fit(x=inputs, y=labels, batch_size=10, epochs=EPOCH_CAP, verbose=1, callbacks=[monitor])
+    history = nn.fit(x=inputs, y=labels, batch_size=32, epochs=EPOCH_CAP, verbose=1, callbacks=[monitor])
     # # save model to file
     nn.save("models/" + nnid + ".h5")
     return history
@@ -106,7 +107,7 @@ def plotTraining(history):
     pyplot.title('Learning Curves')
     pyplot.xlabel('Epoch')
     pyplot.ylabel('RMSE')
-    pyplot.plot(history.history['loss'], label='training')
+    pyplot.plot(history.history['loss'], label='Training Loss')
     #pyplot.plot(history.history['val_loss'], label='val')
     pyplot.legend()
     pyplot.show()

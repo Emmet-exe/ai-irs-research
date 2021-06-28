@@ -1,5 +1,5 @@
 # Filenames
-TRAINING_EIN_FILE = "training_eins.json"
+# TRAINING_EIN_FILE = "training_eins.json"
 TRAINING_DATA_FILE = "training_data"
 
 YEAR_MIN = 2010

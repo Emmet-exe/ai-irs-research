@@ -94,7 +94,7 @@ def ein_to_training_data(ein, startingYear):
     orgInput = []
     # grants and similar amounts paid + growth in net assets, current year
     label = int(org[91]) - int(org[90]) + utils.zeroint(org[71])
-    # label = (int(org[91]) + utils.zeroint(org[71])) / float(int(org[90]) + utils.zeroint(org[72]))
+    # label = int(org[91]) + utils.zeroint(org[71])
     for year in range(startingYear, finalYear + 1):
         current = dataset[year][ein]
         # contributions for past 4 years (line 8)
@@ -173,9 +173,11 @@ def test(name):
             currentinput, label = ein_to_training_data(ein, startYear)
             inputArr = []
             inputArr.append(currentinput)
-            f.write("Prediction for EIN " + str(ein) + ": " + str(float(neuralnet.predict(nn, numpy.array(inputArr))[0])) + " | Label: " + str(label) + "\n")
+            prediction = neuralnet.predict(nn, numpy.array(inputArr))[0].item()
+            # prevYear = float(currentinput[-2] + currentinput[-3])
+            # f.write("Prediction for EIN " + str(ein) + ": " + str(float(prediction)) + " (" + utils.strround((prediction / prevYear - 1) * 100) +  "%) | Label: " + str(label) + " (" + utils.strround((label / prevYear - 1) * 100) + "%)\n")
+            f.write("Prediction for EIN " + str(ein) + ": " + utils.strround(float(prediction)) + " | Label: " + utils.strround(label) + "\n")
         except Exception as e:
-            print(e)
             j += 1
         i += 1
     
@@ -184,5 +186,5 @@ def test(name):
     f.close()
     print("[\u2713] Evaluated network " + name)
 
-#train()
-test("26062021-230055")
+# train()
+test("27062021-124600")

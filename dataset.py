@@ -1,11 +1,7 @@
 import csv
 import json
-import random
 import utils
-import neuralnet
-import time
 import datetime
-import numpy
 from config import *
 from collections import OrderedDict
 
@@ -14,7 +10,7 @@ dataset = OrderedDict()
 for year in range(YEAR_MIN, YEAR_MAX + 1):
     dataset[year] = {}
 
-# Load the csv files for [span] years starting with yearMin
+# Load the csv files for [span) years starting with yearMin
 def load_dataset(yMin, span = 1):
     for year in range(yMin, yMin + span):
         f = open("irs990_main/irs990_main_" + str(year) + ".csv")
@@ -27,13 +23,17 @@ def load_dataset(yMin, span = 1):
         f.close()
     print("[\u2713] Dataset loaded - Start:", yMin, "- Span:", span)
 
+# list of EINs in a certain year
+def all_eins(year):
+    return dataset[year].keys()
+
 # Create a set of viable eins for a given set of years
 def get_eins(yMin, span):
     for year in range(yMin, yMin + span):
         if (len(dataset[year]) == 0):
             load_dataset(yMin, span)
 
-    eins = dataset[yMin].keys()
+    eins = all_eins(yMin)
     trainingEINs = set()
     for company in eins:
         valid = True
@@ -90,10 +90,10 @@ def generate_dataset(startingYear):
 # WILL THROW EXCEPTION if dataset is not properly loaded
 def ein_to_training_data(ein, startingYear):
     finalYear = startingYear + DATA_SPAN - 1
-    org = dataset[finalYear][ein]
+    org = get_org(finalYear, ein)
     orgInput = []
-    # grants and similar amounts paid + growth in net assets, current year
-    label = int(org[91]) - int(org[90]) + utils.zeroint(org[71])
+    
+    label = get_label(org)
     # label = int(org[91]) + utils.zeroint(org[71])
     for year in range(startingYear, finalYear + 1):
         current = dataset[year][ein]
@@ -111,80 +111,28 @@ def ein_to_training_data(ein, startingYear):
     # contributions, prior year (line 13)
     orgInput.append(utils.zeroint(org[72]))
     # years in existence
-    orgInput.append(datetime.datetime.now().year - int(org[50]))
+    yearsSince = years_in_existence(org)
+    if yearsSince < 0:
+        raise Exception("Cannot have existed for negative years") 
+    orgInput.append(yearsSince)
     
     return orgInput, label
 
-def load_training_data(startingYear):
+def get_label(org):
+    # grants and similar amounts paid + growth in net assets, current year
+    return utils.zeroint(org[91]) - utils.zeroint(org[90]) + utils.zeroint(org[71])
+
+def years_in_existence(org):
     try:
-        f = open(TRAINING_DATA_FILE + str(startingYear) + ".json", "r")
-        trainingData = json.loads(f.read())
-        f.close()
-        inputs = numpy.array(trainingData["inputs"])
-        labels = numpy.array(trainingData["labels"])
-        print("[\u2713] Loaded training data (Start year: " + str(startingYear) +  ", Batch size: " + str(len(trainingData["labels"])) + ")")
-        return inputs, labels
+        years = datetime.datetime.now().year - int(org[50])
+        if years > 0:
+            return years
+        return -1
     except:
-        generate_dataset(startingYear)
-        return load_training_data(startingYear)
+        return -1
 
-# Generate a unique neural net id for later
-def gen_nnid():
-    return time.strftime("%d%m%Y-%H%M%S")
+def get_org(year, ein):
+    return dataset[year][ein]
 
-# run an experiment
-def train(seed = 0):
-    # create a unique neural net id
-    nnid = gen_nnid()
-
-    # load up the training dataset
-    inputs, labels = load_training_data(2010)
-    
-    # generate the network
-    neuralNet = neuralnet.createNN(seed, len(inputs[0]))
-    # train the network
-    history = neuralnet.train(neuralNet, nnid, inputs, labels)
-    neuralnet.plotTraining(history)
-
-# evaluate a model on a different dataset
-def test(name):
-    try:
-        nn = neuralnet.load_nn(name)
-    except:
-        print(name + " is not saved as a model.")
-        return
-    startYear = 2014
-    
-    inputs, labels = load_training_data(startYear)
-    ft = open("training_logs/" + name + ".txt", "r")
-    training_log = ft.read()
-    ft.close()
-    loss = neuralnet.evaluate(nn, inputs, labels)
-    f = open("eval_logs/" + name + ".txt", "w")
-    f.write("----- Evaluation of Neural Network #" + name + " -----\n")
-    f.write("Absolute Evaluation Loss: " + str(loss) + "\n")
-    
-    f.write("\nExample Predictions:\n")
-    eins = get_eins(startYear, 4)
-    i, j = 0, 10
-    while i < j:
-        try:
-            ein = random.choice(tuple(eins))
-            currentinput, label = ein_to_training_data(ein, startYear)
-            inputArr = []
-            inputArr.append(currentinput)
-            prediction = neuralnet.predict(nn, numpy.array(inputArr))[0].item()
-            # prevYear = float(currentinput[-2] + currentinput[-3])
-            # f.write("Prediction for EIN " + str(ein) + ": " + str(float(prediction)) + " (" + utils.strround((prediction / prevYear - 1) * 100) +  "%) | Label: " + str(label) + " (" + utils.strround((label / prevYear - 1) * 100) + "%)\n")
-            f.write("Prediction for EIN " + str(ein) + ": " + utils.strround(float(prediction)) + " | Label: " + utils.strround(label) + "\n")
-        except Exception as e:
-            j += 1
-        i += 1
-    
-    f.write("\nTraining log for backreference...\n")
-    f.write(training_log)
-    f.close()
-    print("[\u2713] Evaluated network " + name)
-
-# train()
-test("27062021-124600")
+def dataset_obj():
+    return dataset

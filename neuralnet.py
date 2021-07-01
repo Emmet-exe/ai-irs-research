@@ -9,9 +9,10 @@ import tensorflow
 
 EPOCH_CAP = 300
 NETWORK_SHAPE = [20, 16, 10, 6]
-SLOW_IMPROVEMENT_THRESHOLD = 1.006
+SLOW_IMPROVEMENT_THRESHOLD = 1.005
 ACTIVATION = None
 OUT_ACTIVATION = None
+BATCH_SIZE = 32
 
 # create the neural network
 def createNN(seedNum, inputNum):
@@ -63,7 +64,7 @@ class MonitorNN(keras.callbacks.Callback):
         self.acc.append(logs.get('acc'))
 
         # Less frequent logger
-        if epoch > 0 and epoch % (EPOCH_CAP/40) == 0:
+        if epoch > 0 and epoch % 5 == 0:
             self.log("Network reached epoch #" + str(epoch) + ". Loss: " + str(self.losses[-1])) 
 
         # Hard stop for slow validation error improvement
@@ -82,33 +83,35 @@ class MonitorNN(keras.callbacks.Callback):
             self.log("Ending after final epoch (" + str(EPOCH_CAP) + " epochs complete)")
             self.end
 
-
+# Train and save a neural network on the given training data
 def train(nn, nnid, inputs, labels):
     # train the model
     monitor = MonitorNN(nn, nnid, inputs, labels)
-    history = nn.fit(x=inputs, y=labels, batch_size=32, epochs=EPOCH_CAP, verbose=1, callbacks=[monitor])
+    history = nn.fit(x=inputs, y=labels, batch_size=BATCH_SIZE, epochs=EPOCH_CAP, verbose=1, callbacks=[monitor], validation_split=0.1)
     # # save model to file
     nn.save("models/" + nnid + ".h5")
     return history
 
+# load a model from /h5 file that is saved at the end of training
 def load_nn(name):
     model = load_model("models/" + name + ".h5")
     return model
 
+# evaluate the model on testing dataset
 def evaluate(nn, inputs, labels):
-     # evaluate the model
     return nn.evaluate(inputs, labels, verbose=0)
 
 # Make a prediction
 def predict(nn, inputs):
-    return nn.predict(inputs, batch_size=None, verbose=0)
+    return nn.predict(inputs, batch_size=None, verbose=0)[0].item()
 
+# displays a graph of training loss, given history object
 def plotTraining(history):
     pyplot.title('Learning Curves')
     pyplot.xlabel('Epoch')
-    pyplot.ylabel('RMSE')
-    pyplot.plot(history.history['loss'], label='Training Loss')
-    #pyplot.plot(history.history['val_loss'], label='val')
+    pyplot.ylabel('Absolute Loss')
+    pyplot.plot(history.history['loss'], label='Training loss')
+    pyplot.plot(history.history['val_loss'], label='Validation loss')
     pyplot.legend()
     pyplot.show()
 

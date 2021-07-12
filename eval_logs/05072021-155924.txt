@@ -1,0 +1,37 @@
+----- Evaluation of Neural Network #05072021-155924 -----
+Absolute Evaluation Loss: 1876291.625
+
+Example Predictions:
+Prediction for EIN 521598993: 72407.156 | Label: -110468.0
+Prediction for EIN 264668957: 78231.656 | Label: -134495.0
+Prediction for EIN 760334402: 2158.27 | Label: 409246.0
+Prediction for EIN 391947728: 471805.5 | Label: -20034.0
+Prediction for EIN 592463138: 13049.376 | Label: 6015.0
+Prediction for EIN 274383848: 140334.672 | Label: 90911.0
+Prediction for EIN 582665243: 84373.164 | Label: -113119.0
+Prediction for EIN 540505913: 1592381.625 | Label: 720453.0
+Prediction for EIN 741900412: 147134.859 | Label: -3524.0
+Prediction for EIN 131860450: 4315.564 | Label: 14274.0
+
+Training log for backreference...
+----- Training Neural Net #05072021-155924 with shape (15, 9) -----
+Pre-training Loss: 29783124.0
+Network reached epoch #5. Loss: 4314459.0
+Network reached epoch #10. Loss: 3388301.0
+Network reached epoch #15. Loss: 3103865.5
+Network reached epoch #20. Loss: 3075422.0
+Network reached epoch #25. Loss: 3052161.0
+Network reached epoch #30. Loss: 3076700.0
+Network reached epoch #35. Loss: 2983726.0
+Network reached epoch #40. Loss: 2973023.25
+Network reached epoch #45. Loss: 2992771.25
+Network reached epoch #50. Loss: 3012372.25
+Network reached epoch #55. Loss: 2985052.75
+Network reached epoch #60. Loss: 2992555.25
+Network reached epoch #65. Loss: 2942364.75
+Network reached epoch #70. Loss: 3010280.5
+Network reached epoch #75. Loss: 2958741.0
+Network reached epoch #80. Loss: 2933701.0
+Network reached epoch #85. Loss: 2950533.25
+Ended (slow improvement) at epoch 89
+----------- [!] Training Complete - Final Loss: 2968112.75 -----------

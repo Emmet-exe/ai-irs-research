@@ -2,7 +2,9 @@ import csv
 import json
 import utils
 import datetime
+import numpy
 from config import *
+from neuralnet import scalar_activation
 from collections import OrderedDict
 
 # DATASET DICTIONARY
@@ -78,7 +80,7 @@ def generate_dataset(startingYear):
         try:
             orgInput, label = ein_to_training_data(ein, startingYear)
             trainingData["inputs"].append(orgInput)
-            trainingData["labels"].append(label)
+            trainingData["labels"].append(scalar_activation(label))
         except:
             continue
         
@@ -105,9 +107,9 @@ def ein_to_training_data(ein, startingYear):
         orgInput.append(utils.zeroint(current[66]))
         # total expenses minus contributions for last 4 years (line 18 - 13)
         orgInput.append(utils.zeroint(current[83]) - utils.zeroint(current[72]))
+        # net assets vs liabilities for last 4 years (line 22)
+        orgInput.append(int(current[90]))
     
-    # net assets vs liabilities, as of prior year (line 22)
-    orgInput.append(int(org[90]))
     # contributions, prior year (line 13)
     orgInput.append(utils.zeroint(org[72]))
     # years in existence
@@ -117,6 +119,29 @@ def ein_to_training_data(ein, startingYear):
     orgInput.append(yearsSince)
     
     return orgInput, label
+
+
+# load the dataset from file, or generate it if it doesn't exist
+def load_training_data(startingYear):
+    try:
+        f = open(TRAINING_DATA_FILE + str(startingYear) + ".json", "r")
+        trainingData = json.loads(f.read())
+        f.close()
+        inputs = numpy.array(trainingData["inputs"])
+        labels = numpy.array(trainingData["labels"])
+        print("[\u2713] Loaded training data (Start year: " + str(startingYear) +  ", Batch size: " + str(len(trainingData["labels"])) + ")")
+        return inputs, labels
+    except:
+        generate_dataset(startingYear)
+        return load_training_data(startingYear)
+
+
+def all_training_data():
+    inputs, labels = firstHalf = load_training_data(YEAR_MIN)
+    inputs2, labels2 = secondHalf = load_training_data(YEAR_MIN + DATA_SPAN)
+    inputs = numpy.concatenate((inputs, inputs2))
+    labels = numpy.concatenate((labels, labels2))
+    return inputs, labels
 
 def get_label(org):
     # grants and similar amounts paid + growth in net assets, current year

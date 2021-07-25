@@ -1,0 +1,14 @@
+----- Training Neural Net #16072021-152211 with shape (21, 16, 18, 9, 7, 3) -----
+Pre-training Loss: 136.34014892578125
+Network reached epoch #5. Loss: 12.776172637939453
+Network reached epoch #10. Loss: 12.62490463256836
+Network reached epoch #15. Loss: 12.500368118286133
+Network reached epoch #20. Loss: 12.474672317504883
+Network reached epoch #25. Loss: 12.78154182434082
+Network reached epoch #30. Loss: 12.562164306640625
+Network reached epoch #35. Loss: 12.489378929138184
+Network reached epoch #40. Loss: nan
+Network reached epoch #45. Loss: nan
+Network reached epoch #50. Loss: nan
+Network reached epoch #55. Loss: nan
+Network reached epoch #60. Loss: nan

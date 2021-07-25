@@ -29,7 +29,7 @@ def train(seed = 0):
 def test(name):
     try:
         nn = neuralnet.load_nn(name)
-    except Exception:
+    except Exception as e:
         print(name + " is not saved as a model.")
         return
     startYear = 2014
@@ -45,15 +45,15 @@ def test(name):
     
     f.write("\nExample Predictions:\n")
     eins = dataset.get_eins(startYear, DATA_SPAN)
-    i, j = 0, 10
+    i, j = 0, 20
     while i < j:
         try:
             ein = random.choice(tuple(eins))
             currentinput, label = dataset.ein_to_training_data(ein, startYear)
             inputArr = []
             inputArr.append(currentinput)
-            prediction = neuralnet.activation_inverse(neuralnet.predict(nn, numpy.array(inputArr)))
-            # prevYear = float(currentinput[-2] + currentinput[-3])
+            # prediction = neuralnet.activation_inverse(neuralnet.predict(nn, numpy.array(inputArr)))
+            prediction = neuralnet.predict(nn, numpy.array(inputArr))
             # f.write("Prediction for EIN " + str(ein) + ": " + str(float(prediction)) + " (" + utils.strround((prediction / prevYear - 1) * 100) +  "%) | Label: " + str(label) + " (" + utils.strround((label / prevYear - 1) * 100) + "%)\n")
             f.write("Prediction for EIN " + str(ein) + ": " + utils.strround(float(prediction)) + " | Label: " + utils.strround(label) + "\n")
         except Exception as e:

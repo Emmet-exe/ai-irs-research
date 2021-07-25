@@ -9,7 +9,6 @@ import neuralnet
 import utils
 import numpy as np
 
-x, y = [], []
 dataset.load_dataset(YEAR_MIN, YEAR_MAX - YEAR_MIN + 1)
 nn = None
 
@@ -18,7 +17,8 @@ def year_analysis():
     pyplot.title("Years in Existence vs. Growth")
     pyplot.xlabel('Years since founding')
     pyplot.ylabel('Predicted Growth')
-
+    x, y = [], []
+    
     i = 0
     while i < 1:
         ein = year = existed = -1
@@ -43,7 +43,7 @@ def year_analysis():
                 inputs = []
                 orgInputs[-1] = j
                 inputs.append(orgInputs)
-                y.append(neuralnet.activation_inverse(neuralnet.predict(nn, np.array(inputs))))
+                y.append(neuralnet.predict(nn, np.array(inputs)))
 
             pyplot.scatter(x, y)
             pyplot.plot(x, plotting.line_fit(x, y))
@@ -86,7 +86,8 @@ if len(sys.argv) > 1:
                 year_analysis()
             elif arg == "--decline":
                 decline_analysis()
-    except:
+    except Exception as e:
+        print(e)
         print(nnid + " is not saved as a model.")
     
     

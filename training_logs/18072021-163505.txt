@@ -1,0 +1,55 @@
+----- Training Neural Net #18072021-163505 with shape (24, 19, 15, 9, 6, 3) -----
+Pre-training Loss: 286.5665588378906
+Network reached epoch #5. Loss: 12.290221214294434
+Network reached epoch #10. Loss: 12.127023696899414
+Network reached epoch #15. Loss: 11.790815353393555
+Network reached epoch #20. Loss: 11.581621170043945
+Network reached epoch #25. Loss: 11.489582061767578
+Network reached epoch #30. Loss: 11.490092277526855
+Network reached epoch #35. Loss: 11.33349323272705
+Network reached epoch #40. Loss: 11.282426834106445
+Network reached epoch #45. Loss: 11.165213584899902
+Network reached epoch #50. Loss: 11.088057518005371
+Network reached epoch #55. Loss: 11.251326560974121
+Network reached epoch #60. Loss: 11.029891967773438
+Network reached epoch #65. Loss: 11.091297149658203
+Network reached epoch #70. Loss: 10.955153465270996
+Network reached epoch #75. Loss: 10.898109436035156
+Network reached epoch #80. Loss: 10.858928680419922
+Network reached epoch #85. Loss: 11.165031433105469
+Network reached epoch #90. Loss: 11.245742797851562
+Network reached epoch #95. Loss: 11.271787643432617
+Network reached epoch #100. Loss: 11.177757263183594
+Network reached epoch #105. Loss: 10.922812461853027
+Network reached epoch #110. Loss: 10.953540802001953
+Network reached epoch #115. Loss: 10.918717384338379
+Network reached epoch #120. Loss: 10.942445755004883
+Network reached epoch #125. Loss: 10.845450401306152
+Network reached epoch #130. Loss: 11.012834548950195
+Network reached epoch #135. Loss: 11.267985343933105
+Network reached epoch #140. Loss: 10.930502891540527
+Network reached epoch #145. Loss: 11.278816223144531
+Network reached epoch #150. Loss: 10.980706214904785
+Network reached epoch #155. Loss: 10.805603981018066
+Network reached epoch #160. Loss: 10.964489936828613
+Network reached epoch #165. Loss: 11.149029731750488
+Network reached epoch #170. Loss: 10.86196231842041
+Network reached epoch #175. Loss: 10.943257331848145
+Network reached epoch #180. Loss: 10.821159362792969
+Network reached epoch #185. Loss: 10.878506660461426
+Network reached epoch #190. Loss: 10.688648223876953
+Network reached epoch #195. Loss: 10.73418140411377
+Network reached epoch #200. Loss: 10.749899864196777
+Network reached epoch #205. Loss: 10.912406921386719
+Network reached epoch #210. Loss: 11.394042015075684
+Network reached epoch #215. Loss: 11.331616401672363
+Network reached epoch #220. Loss: 11.159714698791504
+Network reached epoch #225. Loss: 10.937682151794434
+Network reached epoch #230. Loss: 10.994686126708984
+Network reached epoch #235. Loss: 10.870421409606934
+Network reached epoch #240. Loss: 10.983077049255371
+Network reached epoch #245. Loss: 10.954829216003418
+Network reached epoch #250. Loss: 10.646469116210938
+Network reached epoch #255. Loss: 10.680567741394043
+Ended (overfitting) at epoch 255
+----------- [!] Training Complete - Final Loss: 10.680567741394043 -----------

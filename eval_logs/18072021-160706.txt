@@ -1,0 +1,101 @@
+----- Evaluation of Neural Network #18072021-160706 -----
+Absolute Evaluation Loss: 1.1151578426361084
+
+Example Predictions:
+Prediction for EIN 870255206: 1566.347 | Label: 512729.0
+Prediction for EIN 411707738: 1566.347 | Label: 705537.0
+Prediction for EIN 954109386: 1566.347 | Label: 596331.0
+Prediction for EIN 042755382: 1566.347 | Label: -809828.0
+Prediction for EIN 450536075: 1566.317 | Label: 59107.0
+Prediction for EIN 410966862: 1566.317 | Label: 12036.0
+Prediction for EIN 204800428: 1566.317 | Label: 36079.0
+Prediction for EIN 470751830: 1566.347 | Label: 66594.0
+Prediction for EIN 611352889: 1566.317 | Label: 366622.0
+Prediction for EIN 237013291: 1566.317 | Label: 168707.0
+Prediction for EIN 383892964: 1566.317 | Label: 1701624.0
+Prediction for EIN 461600437: 1566.317 | Label: 77384.0
+Prediction for EIN 800554873: 1566.317 | Label: -245887.0
+Prediction for EIN 203432133: 1566.317 | Label: 694210.0
+Prediction for EIN 232690558: 1566.317 | Label: -331895.0
+Prediction for EIN 061241044: 1566.317 | Label: -17139.0
+Prediction for EIN 810226578: 1566.317 | Label: -289326.0
+Prediction for EIN 426120584: 1566.347 | Label: 6272.0
+Prediction for EIN 630289906: 1566.347 | Label: -29429.0
+Prediction for EIN 450464545: 1566.347 | Label: 39660.0
+
+Training log for backreference...
+----- Training Neural Net #18072021-160706 with shape (21, 16, 25, 15, 7, 3) -----
+Pre-training Loss: 20.12467384338379
+Network reached epoch #5. Loss: 1.7076146602630615
+Network reached epoch #10. Loss: 1.451011300086975
+Ended (overfitting) at epoch 11
+Network reached epoch #15. Loss: 1.4609010219573975
+Network reached epoch #20. Loss: 1.470383882522583
+Network reached epoch #25. Loss: 1.50674569606781
+Network reached epoch #30. Loss: 1.4179048538208008
+Network reached epoch #35. Loss: 1.477574348449707
+Network reached epoch #40. Loss: 1.5245708227157593
+Network reached epoch #45. Loss: 1.4039947986602783
+Network reached epoch #50. Loss: 1.477588176727295
+Network reached epoch #55. Loss: 1.639578104019165
+Network reached epoch #60. Loss: 1.4505747556686401
+Network reached epoch #65. Loss: 1.4445600509643555
+Network reached epoch #70. Loss: 1.388845682144165
+Network reached epoch #75. Loss: 1.464566707611084
+Network reached epoch #80. Loss: 1.4437421560287476
+Network reached epoch #85. Loss: 1.4500982761383057
+Network reached epoch #90. Loss: 1.4012478590011597
+Network reached epoch #95. Loss: 1.377461552619934
+Network reached epoch #100. Loss: 1.478240728378296
+Network reached epoch #105. Loss: 1.4825446605682373
+Network reached epoch #110. Loss: 1.4556076526641846
+Network reached epoch #115. Loss: 1.4334837198257446
+Network reached epoch #120. Loss: 1.3658792972564697
+Network reached epoch #125. Loss: 1.4496012926101685
+Network reached epoch #130. Loss: 1.429520606994629
+Network reached epoch #135. Loss: 1.449286699295044
+Network reached epoch #140. Loss: 1.4068289995193481
+Network reached epoch #145. Loss: 1.3563756942749023
+Network reached epoch #150. Loss: 1.331568956375122
+Network reached epoch #155. Loss: 1.4104310274124146
+Network reached epoch #160. Loss: 1.3093191385269165
+Network reached epoch #165. Loss: 1.3730162382125854
+Network reached epoch #170. Loss: 1.449094533920288
+Network reached epoch #175. Loss: 1.4785047769546509
+Network reached epoch #180. Loss: 1.5824570655822754
+Ended (overfitting) at epoch 181
+Network reached epoch #185. Loss: 1.5572341680526733
+Ended (overfitting) at epoch 189
+Network reached epoch #190. Loss: 1.4083791971206665
+Network reached epoch #195. Loss: 1.3926891088485718
+Network reached epoch #200. Loss: 1.3932095766067505
+Network reached epoch #205. Loss: 1.3768067359924316
+Network reached epoch #210. Loss: 1.5317084789276123
+Network reached epoch #215. Loss: 1.4053386449813843
+Network reached epoch #220. Loss: 1.426717758178711
+Network reached epoch #225. Loss: 1.4904506206512451
+Network reached epoch #230. Loss: 1.408018946647644
+Network reached epoch #235. Loss: 1.4638978242874146
+Network reached epoch #240. Loss: 1.4597902297973633
+Network reached epoch #245. Loss: 1.4025167226791382
+Network reached epoch #250. Loss: 1.4397454261779785
+Network reached epoch #255. Loss: 1.3847076892852783
+Network reached epoch #260. Loss: 1.4259644746780396
+Network reached epoch #265. Loss: 1.3868030309677124
+Network reached epoch #270. Loss: 1.4475852251052856
+Network reached epoch #275. Loss: 1.3898749351501465
+Network reached epoch #280. Loss: 1.3966995477676392
+Network reached epoch #285. Loss: 1.3125765323638916
+Network reached epoch #290. Loss: 1.3491085767745972
+Network reached epoch #295. Loss: 1.4442553520202637
+Network reached epoch #300. Loss: 1.677053689956665
+Ended (overfitting) at epoch 304
+Network reached epoch #305. Loss: 1.493248462677002
+Network reached epoch #310. Loss: 1.5012301206588745
+Network reached epoch #315. Loss: 1.3785923719406128
+Network reached epoch #320. Loss: 1.4723352193832397
+Network reached epoch #325. Loss: 1.4463697671890259
+Network reached epoch #330. Loss: 1.490835189819336
+Network reached epoch #335. Loss: 1.469773530960083
+Network reached epoch #340. Loss: 1.4278708696365356
+Network reached epoch #345. Loss: 1.502435564994812

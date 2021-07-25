@@ -1,0 +1,177 @@
+----- Evaluation of Neural Network #16072021-003517 -----
+Absolute Evaluation Loss: 95.12006378173828
+
+Example Predictions:
+Prediction for EIN 860946968: 1068.753 | Label: 165863.0
+Prediction for EIN 237451213: 633.794 | Label: 474.0
+Prediction for EIN 341284806: 827.553 | Label: -473218.0
+Prediction for EIN 850329331: -8270.229 | Label: 255043.0
+Prediction for EIN 391499115: -2662.597 | Label: 154054.0
+Prediction for EIN 640540169: 4143.417 | Label: -454.0
+Prediction for EIN 650502789: 33039.311 | Label: 65445.0
+Prediction for EIN 452385865: 1277.321 | Label: 0.0
+Prediction for EIN 860841341: 7824.123 | Label: -92674.0
+Prediction for EIN 592756660: 4266.274 | Label: 858808.0
+
+Training log for backreference...
+----- Training Neural Net #16072021-003517 with shape (25, 19, 21, 13, 7) -----
+Pre-training Loss: 1818.029296875
+Network reached epoch #5. Loss: 106.9753646850586
+Network reached epoch #10. Loss: 105.96971130371094
+Network reached epoch #15. Loss: 100.99813842773438
+Network reached epoch #20. Loss: 97.39189147949219
+Network reached epoch #25. Loss: 95.70360565185547
+Network reached epoch #30. Loss: 94.7680435180664
+Network reached epoch #35. Loss: 93.32139587402344
+Network reached epoch #40. Loss: 92.21148681640625
+Network reached epoch #45. Loss: 92.32417297363281
+Network reached epoch #50. Loss: 90.9153823852539
+Network reached epoch #55. Loss: 90.63052368164062
+Network reached epoch #60. Loss: 90.4766616821289
+Network reached epoch #65. Loss: 92.24404907226562
+Network reached epoch #70. Loss: 90.35454559326172
+Network reached epoch #75. Loss: 90.463623046875
+Network reached epoch #80. Loss: 88.92264556884766
+Network reached epoch #85. Loss: 88.96391296386719
+Network reached epoch #90. Loss: 89.55170440673828
+Network reached epoch #95. Loss: 88.96025848388672
+Network reached epoch #100. Loss: 89.04873657226562
+Network reached epoch #105. Loss: 87.2117919921875
+Network reached epoch #110. Loss: 98.89640045166016
+Network reached epoch #115. Loss: 90.54885864257812
+Network reached epoch #120. Loss: 91.65144348144531
+Network reached epoch #125. Loss: 89.5112075805664
+Network reached epoch #130. Loss: 95.7108154296875
+Network reached epoch #135. Loss: 92.6021499633789
+Network reached epoch #140. Loss: 92.36884307861328
+Network reached epoch #145. Loss: 90.69673919677734
+Network reached epoch #150. Loss: 90.35038757324219
+Network reached epoch #155. Loss: 90.45463562011719
+Network reached epoch #160. Loss: 90.03189086914062
+Network reached epoch #165. Loss: 89.30020141601562
+Network reached epoch #170. Loss: 89.04011535644531
+Network reached epoch #175. Loss: 91.99254608154297
+Network reached epoch #180. Loss: 89.22956848144531
+Network reached epoch #185. Loss: 88.50685119628906
+Network reached epoch #190. Loss: 87.95021057128906
+Network reached epoch #195. Loss: 88.05996704101562
+Network reached epoch #200. Loss: 88.18264770507812
+Network reached epoch #205. Loss: 86.00115203857422
+Network reached epoch #210. Loss: 87.61043548583984
+Network reached epoch #215. Loss: 88.60330200195312
+Network reached epoch #220. Loss: 88.70033264160156
+Network reached epoch #225. Loss: 86.15879821777344
+Network reached epoch #230. Loss: 86.46341705322266
+Network reached epoch #235. Loss: 87.26073455810547
+Network reached epoch #240. Loss: 86.29973602294922
+Network reached epoch #245. Loss: 88.00965881347656
+Network reached epoch #250. Loss: 86.74435424804688
+Network reached epoch #255. Loss: 88.2240219116211
+Network reached epoch #260. Loss: 86.85040283203125
+Network reached epoch #265. Loss: 86.32173919677734
+Network reached epoch #270. Loss: 85.91287994384766
+Network reached epoch #275. Loss: 86.99833679199219
+Network reached epoch #280. Loss: 86.94086456298828
+Network reached epoch #285. Loss: 86.81035614013672
+Network reached epoch #290. Loss: 85.69879913330078
+Network reached epoch #295. Loss: 86.82010650634766
+Network reached epoch #300. Loss: 87.29718780517578
+Network reached epoch #305. Loss: 84.72871398925781
+Network reached epoch #310. Loss: 87.31619262695312
+Network reached epoch #315. Loss: 84.89280700683594
+Network reached epoch #320. Loss: 89.42269134521484
+Network reached epoch #325. Loss: 84.43743896484375
+Network reached epoch #330. Loss: 85.9837417602539
+Network reached epoch #335. Loss: 85.37520599365234
+Network reached epoch #340. Loss: 86.68928527832031
+Network reached epoch #345. Loss: 84.64997100830078
+Network reached epoch #350. Loss: 86.68167114257812
+Network reached epoch #355. Loss: 86.53803253173828
+Network reached epoch #360. Loss: 85.59273529052734
+Network reached epoch #365. Loss: 84.79696655273438
+Network reached epoch #370. Loss: 84.33160400390625
+Network reached epoch #375. Loss: 85.92424011230469
+Network reached epoch #380. Loss: 87.95321655273438
+Network reached epoch #385. Loss: 84.98165893554688
+Network reached epoch #390. Loss: 86.00372314453125
+Network reached epoch #395. Loss: 84.76500701904297
+Network reached epoch #400. Loss: 84.60563659667969
+Network reached epoch #405. Loss: 86.08088684082031
+Network reached epoch #410. Loss: 88.587158203125
+Network reached epoch #415. Loss: 86.18614196777344
+Network reached epoch #420. Loss: 84.76439666748047
+Network reached epoch #425. Loss: 87.87499237060547
+Network reached epoch #430. Loss: 86.57398986816406
+Network reached epoch #435. Loss: 86.62873077392578
+Network reached epoch #440. Loss: 84.33128356933594
+Network reached epoch #445. Loss: 88.964599609375
+Network reached epoch #450. Loss: 84.99119567871094
+Network reached epoch #455. Loss: 86.09274291992188
+Network reached epoch #460. Loss: 86.0755844116211
+Network reached epoch #465. Loss: 86.18743133544922
+Network reached epoch #470. Loss: 85.74259948730469
+Network reached epoch #475. Loss: 85.5967788696289
+Network reached epoch #480. Loss: 89.77268981933594
+Network reached epoch #485. Loss: 86.70195770263672
+Network reached epoch #490. Loss: 86.35176086425781
+Network reached epoch #495. Loss: 85.5439682006836
+Network reached epoch #500. Loss: 85.47618103027344
+Network reached epoch #505. Loss: 84.28727722167969
+Network reached epoch #510. Loss: 86.12472534179688
+Network reached epoch #515. Loss: 84.06843566894531
+Network reached epoch #520. Loss: 84.26471710205078
+Network reached epoch #525. Loss: 85.58905029296875
+Network reached epoch #530. Loss: 85.27064514160156
+Network reached epoch #535. Loss: 84.13946533203125
+Network reached epoch #540. Loss: 84.62985229492188
+Network reached epoch #545. Loss: 91.74867248535156
+Network reached epoch #550. Loss: 88.650390625
+Network reached epoch #555. Loss: 88.36702728271484
+Network reached epoch #560. Loss: 86.6490478515625
+Network reached epoch #565. Loss: 84.71651458740234
+Network reached epoch #570. Loss: 90.39619445800781
+Network reached epoch #575. Loss: 88.54159545898438
+Network reached epoch #580. Loss: 88.98347473144531
+Network reached epoch #585. Loss: 88.66259765625
+Network reached epoch #590. Loss: 92.85742950439453
+Network reached epoch #595. Loss: 88.0628662109375
+Network reached epoch #600. Loss: 87.73514556884766
+Network reached epoch #605. Loss: 96.39679718017578
+Network reached epoch #610. Loss: 92.31237030029297
+Network reached epoch #615. Loss: 94.26056671142578
+Network reached epoch #620. Loss: 92.80819702148438
+Network reached epoch #625. Loss: 93.63937377929688
+Network reached epoch #630. Loss: 94.6395034790039
+Network reached epoch #635. Loss: 91.48589324951172
+Network reached epoch #640. Loss: 91.4588851928711
+Network reached epoch #645. Loss: 92.67102813720703
+Network reached epoch #650. Loss: 89.88134002685547
+Network reached epoch #655. Loss: 86.79348754882812
+Network reached epoch #660. Loss: 86.09144592285156
+Network reached epoch #665. Loss: 89.9276123046875
+Network reached epoch #670. Loss: 87.75450897216797
+Network reached epoch #675. Loss: 87.85954284667969
+Network reached epoch #680. Loss: 86.0706558227539
+Network reached epoch #685. Loss: 85.68073272705078
+Network reached epoch #690. Loss: 84.99221801757812
+Network reached epoch #695. Loss: 85.10162353515625
+Network reached epoch #700. Loss: 84.53252410888672
+Network reached epoch #705. Loss: 84.77059936523438
+Network reached epoch #710. Loss: 85.24915313720703
+Network reached epoch #715. Loss: 85.00959777832031
+Network reached epoch #720. Loss: 84.94479370117188
+Network reached epoch #725. Loss: 85.29251861572266
+Network reached epoch #730. Loss: 84.31455993652344
+Network reached epoch #735. Loss: 84.71843719482422
+Network reached epoch #740. Loss: 83.446044921875
+Network reached epoch #745. Loss: 83.87870025634766
+Network reached epoch #750. Loss: 83.85623168945312
+Network reached epoch #755. Loss: 82.88617706298828
+Network reached epoch #760. Loss: 84.79076385498047
+Network reached epoch #765. Loss: 84.46676635742188
+Network reached epoch #770. Loss: 83.52387237548828
+Network reached epoch #775. Loss: 84.5720443725586
+Network reached epoch #780. Loss: 83.95703125
+Network reached epoch #785. Loss: 84.72669982910156
+Network reached epoch #790. Loss: 84.79296875
+Network reached epoch #795. Loss: 84.96339416503906

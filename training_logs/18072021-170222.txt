@@ -1,0 +1,8 @@
+----- Training Neural Net #18072021-170222 with shape (17, 14, 7, 3) -----
+Pre-training Loss: 134.32164001464844
+Network reached epoch #5. Loss: 12.137085914611816
+Network reached epoch #10. Loss: 11.965789794921875
+Network reached epoch #15. Loss: 11.809110641479492
+Network reached epoch #20. Loss: 11.725768089294434
+Ended (overfitting) at epoch 20
+----------- [!] Training Complete - Final Loss: 11.725768089294434 -----------

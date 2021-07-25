@@ -1,0 +1,31 @@
+----- Training Neural Net #16072021-140835 with shape (21, 16, 18, 11, 7, 3) -----
+Pre-training Loss: 41.68642044067383
+Network reached epoch #5. Loss: 11.933150291442871
+Network reached epoch #10. Loss: 11.857155799865723
+Network reached epoch #15. Loss: 11.529877662658691
+Network reached epoch #20. Loss: 11.29194450378418
+Network reached epoch #25. Loss: 11.280623435974121
+Network reached epoch #30. Loss: 10.871413230895996
+Network reached epoch #35. Loss: 10.824254989624023
+Network reached epoch #40. Loss: 10.715249061584473
+Network reached epoch #45. Loss: 10.599563598632812
+Network reached epoch #50. Loss: 10.515042304992676
+Network reached epoch #55. Loss: 10.648893356323242
+Network reached epoch #60. Loss: 10.380210876464844
+Network reached epoch #65. Loss: 10.475933074951172
+Network reached epoch #70. Loss: 10.350898742675781
+Network reached epoch #75. Loss: 10.199848175048828
+Network reached epoch #80. Loss: 10.174347877502441
+Network reached epoch #85. Loss: 10.148306846618652
+Network reached epoch #90. Loss: 10.132144927978516
+Network reached epoch #95. Loss: 10.056177139282227
+Network reached epoch #100. Loss: 10.1431884765625
+Network reached epoch #105. Loss: 10.174286842346191
+Network reached epoch #110. Loss: 10.385144233703613
+Network reached epoch #115. Loss: 10.059784889221191
+Network reached epoch #120. Loss: 10.00421142578125
+Network reached epoch #125. Loss: 10.155272483825684
+Network reached epoch #130. Loss: 10.008110046386719
+Network reached epoch #135. Loss: 10.053351402282715
+Ended (slow improvement) at epoch 136
+----------- [!] Training Complete - Final Loss: 10.069524765014648 -----------

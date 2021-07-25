@@ -48,24 +48,6 @@ def get_eins(yMin, span):
 
     return trainingEINs
 
-    # f = open(TRAINING_EIN_FILE + "2", "w")
-    # f.write(json.dumps(trainingEINs, default = utils.serialize_set))
-    # f.close()
-    # print("[\u2713] Wrote", len(trainingEINs), "EINs to " + TRAINING_EIN_FILE)
-
-# load the training eins from the file
-# def load_training_eins():
-#     try:
-#         f = open(TRAINING_EIN_FILE, "r")
-#         einSet = set(json.loads(f.read()))
-#         f.close()
-#         if len(einSet) == 0:
-#             return 0
-#         print("[\u2713] Read", len(einSet), "EINs from " + TRAINING_EIN_FILE)
-#         return einSet
-#     except:
-#         return 0
-
 # generate and organize the training dataset 
 # Dataset span is 4 years
 def generate_dataset(startingYear):
@@ -79,11 +61,13 @@ def generate_dataset(startingYear):
     for ein in eins:
         try:
             orgInput, label = ein_to_training_data(ein, startingYear)
-            trainingData["inputs"].append(orgInput)
-            trainingData["labels"].append(scalar_activation(label))
+            if (label >= 10000):
+                trainingData["inputs"].append(orgInput)
+                # trainingData["labels"].append(scalar_activation(label))
+                trainingData["labels"].append(label)
         except:
             continue
-        
+
     f = open(TRAINING_DATA_FILE + str(startingYear) + ".json", "w")
     f.write(json.dumps(trainingData))
     f.close()

@@ -18,22 +18,33 @@ def eval(name):
 
     correct = 0
     percentErr = 0
-    step = 50
+    percentChange = 0
+    step = 1
+    total = 0
     for i in range(0, len(eins), step):
         ein = eins[i]
         try:
             currentinput, label = dataset.ein_to_training_data(ein, startYear)
-            prediction = neuralnet.predict(nn, numpy.array([currentinput]))
-            if label * prediction > 0:
-                correct += 1
-            percentErr += abs((prediction + label) / label - 1)
+            if abs(label) >= INSIG_CONST:
+                prediction = neuralnet.predict(nn, numpy.array([currentinput]))                
+                prev = currentinput[-3] + currentinput[-7]
+                pctErr = abs((prev + prediction) / (prev + label) - 1)
+                if pctErr < 1000:
+                    total += 1
+                    percentErr += pctErr
+                    percentChange += abs((prev + label) / prev - 1)
+                    if numpy.sign(label) * numpy.sign(prediction) > 0:
+                        correct += 1
+            if i % 1000 == 0:
+                print(i, len(eins))
         except:
             continue 
     
-    total = len(eins) / step
     percentErr /= total
+    percentChange /= total
     print("Growth/Decline Success Rate:", correct / total)
-    print("Average % Error:", percentErr)
+    print("Average % Error:", percentErr * 100)
+    print("Average % Change:", percentChange * 100)
     print("[\u2713] Evaluated network " + name)
 
 if len(sys.argv) > 1:

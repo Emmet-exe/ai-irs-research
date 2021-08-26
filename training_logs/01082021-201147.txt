@@ -1,0 +1,39 @@
+----- Training Neural Net #01082021-201147 with shape (24, 17, 19, 13, 7, 3) -----
+Pre-training Loss: 46.77867889404297
+Network reached epoch #5. Loss: 5.329072952270508
+Network reached epoch #10. Loss: 5.185765743255615
+Network reached epoch #15. Loss: 5.08924674987793
+Network reached epoch #20. Loss: 5.052025318145752
+Network reached epoch #25. Loss: 4.965702533721924
+Network reached epoch #30. Loss: 4.983619689941406
+Network reached epoch #35. Loss: 4.937459945678711
+Network reached epoch #40. Loss: 4.898114204406738
+Network reached epoch #45. Loss: 4.872859477996826
+Network reached epoch #50. Loss: 4.959248065948486
+Network reached epoch #55. Loss: 4.8498992919921875
+Network reached epoch #60. Loss: 4.825703144073486
+Network reached epoch #65. Loss: 4.7953081130981445
+Network reached epoch #70. Loss: 4.795650005340576
+Network reached epoch #75. Loss: 4.821834564208984
+Network reached epoch #80. Loss: 4.789388179779053
+Network reached epoch #85. Loss: 4.7870001792907715
+Network reached epoch #90. Loss: 4.754363059997559
+Network reached epoch #95. Loss: 4.735108852386475
+Network reached epoch #100. Loss: 4.727146148681641
+Network reached epoch #105. Loss: 4.703588962554932
+Network reached epoch #110. Loss: 4.704758644104004
+Network reached epoch #115. Loss: 4.689878463745117
+Network reached epoch #120. Loss: 4.666337966918945
+Network reached epoch #125. Loss: 4.650769233703613
+Network reached epoch #130. Loss: 4.653672695159912
+Network reached epoch #135. Loss: 4.6317458152771
+Network reached epoch #140. Loss: 4.630491256713867
+Network reached epoch #145. Loss: 4.612009048461914
+Network reached epoch #150. Loss: 4.593367576599121
+Network reached epoch #155. Loss: 4.599098205566406
+Network reached epoch #160. Loss: 4.5868353843688965
+Network reached epoch #165. Loss: 4.564458847045898
+Network reached epoch #170. Loss: 4.6486430168151855
+Network reached epoch #175. Loss: 4.549681186676025
+Ended (slow improvement) at epoch 179
+----------- [!] Training Complete - Final Loss: 4.595304489135742 -----------

@@ -1,6 +1,3 @@
-from re import X
-import re
-from typing_extensions import final
 import dataset
 from config import *
 import sys
@@ -10,10 +7,11 @@ import utils
 import json
 import os
 import matplotlib.pyplot as plt
-import math
 
-#nn = neuralnet.load_nn("15072021-205218")
-nn = neuralnet.load_nn("25072021-144709")
+# nn = neuralnet.load_nn("15072021-205218")
+# nn = neuralnet.load_nn("25072021-144709")
+# nn = neuralnet.load_nn("28072021-152316")
+nn = neuralnet.load_nn("01082021-193621")
 dataset.load_dataset(YEAR_MIN, YEAR_MAX - YEAR_MIN + 1)
 NEGATIVE_EIN_FILENAME = "negative_eins.json"
 
@@ -155,29 +153,48 @@ def inc_map():
     # points = ax.scatter(xCoords, yCoords, c=z, cmap=cmap, vmin=-Z_MAX, vmax=Z_MAX)
     # f.colorbar(points)
     # plt.show()
-    
+
 def inc_map2():
-    f = open(NEGATIVE_EIN_FILENAME, "r")
-    eins = json.loads(f.read())
-    f.close()
+    # f = open(NEGATIVE_EIN_FILENAME, "r")
+    # eins = json.loads(f.read())
+    # f.close()
+    eins = list(dataset.get_eins(2014, DATA_SPAN))
+    resolution = 32
+    mesh = [[0 for j in range(resolution)] for i in range(resolution)]
 
     print("Loaded EINs")
 
-    ein, inputs, label = None, None, None
-    if ein == None:
-        for e in eins:
-            inputs, label = dataset.ein_to_training_data(e, 2014)
-            prediction = neuralnet.pctpredict(nn, np.array([inputs]), inputs[-3])
-            if 0 < prediction < .5:
-                ein = e
-                # the dreaded break statement... - doing it just to avoid casting the eins
-                break
+    for i in range(0, len(eins), 2000):
+        try:
+            populate_inc_map2(eins[i], mesh, resolution)
+        except:
+            continue
+    
+    cmap = "RdBu"
+    finalMesh = np.array(mesh)
+    fig, ax = plt.subplots()
+    x, y = np.meshgrid(np.linspace(-.5, 2, resolution), np.linspace(-.5, 2, resolution))
+    # maxIndex = np.unravel_index(np.argmax(abs(finalMesh)), finalMesh.shape)
+    # zMax = abs(finalMesh[maxIndex[0]][maxIndex[1]])
+    maxIndex = np.unravel_index(np.argmax(finalMesh), finalMesh.shape)
+    minIndex = np.unravel_index(np.argmin(finalMesh), finalMesh.shape)
+    zMax = finalMesh[maxIndex[0]][maxIndex[1]]
+    zMin = finalMesh[minIndex[0]][minIndex[1]]
+    ax.set_title("Income Source Prediction Landscape")
+    ax.set_xlabel('% Original Sustainable Income')
+    ax.set_ylabel('% Original Expenses')
+    ax.axis([x.min(), x.max(), y.min(), y.max()])
+    c = ax.pcolormesh(x, y, finalMesh, cmap=cmap, vmin=zMin, vmax=zMax)
+    fig.colorbar(c, ax=ax)
+    plt.show()
+
+def populate_inc_map2(ein, mesh, resolution):
+    inputs, label = dataset.ein_to_training_data(ein, 2014)
         
     print("EIN", ein, "has been selected")
 
     # PREPARE THE INPUTS FOR MANIPULATION
-    resolution = 100
-    stepConstant = 1 / resolution * 3
+    stepConstant = 1 / resolution * 2.5
     xsteps = [0] * 4
     x2steps = [0] * 4
     ysteps = [0] * 4
@@ -193,9 +210,8 @@ def inc_map2():
             ysteps[i // 5] = stepConstant * inputs[i]
             inputs[i] = -abs(inputs[i]) / 2
 
-    print("Inputs have been prepared")    
+    # print("Inputs have been prepared")    
 
-    mesh = [[0 for j in range(resolution)] for i in range(resolution)]
     # backwards thru rows
     for i in range(resolution - 1, -1, -1):
         for k in range(3, 20, 5):
@@ -207,24 +223,9 @@ def inc_map2():
             for m in range(2, 20, 5):
                 inputs[m] = x2steps[m // 5] * j
 
-            mesh[i][j] = neuralnet.pctpredict(nn, np.array([inputs]), inputs[-3])
+            mesh[i][j] += neuralnet.pctpredict(nn, np.array([inputs]), inputs[-3])
 
-        print(str((resolution - i) / resolution * 100) + "% Complete")
-    
-    cmap = "RdBu"
-    finalMesh = np.array(mesh)
-    fig, ax = plt.subplots()
-    x, y = np.meshgrid(np.linspace(-.5, 2.5, resolution), np.linspace(-.5, 2.5, resolution))
-    maxIndex = np.unravel_index(np.argmax(abs(finalMesh)), finalMesh.shape)
-    zMax = abs(finalMesh[maxIndex[0]][maxIndex[1]])
-    zMin = -zMax
-    ax.set_title("Income Source Prediction Landscape")
-    ax.set_xlabel('% Original Sustainable Income')
-    ax.set_ylabel('% Original Expenses')
-    ax.axis([x.min(), x.max(), y.min(), y.max()])
-    c = ax.pcolormesh(x, y, finalMesh, cmap=cmap, vmin=zMin, vmax=zMax)
-    fig.colorbar(c, ax=ax)
-    plt.show()
+        # print(str((resolution - i) / resolution * 100) + "% Complete")
 
 # Network id is passed as cmd line argument
 if len(sys.argv) > 1:

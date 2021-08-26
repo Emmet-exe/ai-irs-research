@@ -7,8 +7,8 @@ from matplotlib import pyplot
 import keras
 import tensorflow
 
-EPOCH_CAP = 350
-NETWORK_SHAPE = [24, 18, 21, 15, 8, 3]
+EPOCH_CAP = 500
+NETWORK_SHAPE = [24, 17, 19, 13, 7, 3]
 SLOW_IMPROVEMENT_THRESHOLD = 1.0015
 BATCH_SIZE = 32
 
@@ -18,8 +18,7 @@ def custom_loss(y_true, y_pred):
     label = keras.backend.cast(y_true, keras.backend.floatx())
     return keras.backend.mean(keras.backend.abs(keras.backend.abs(label - y_pred) / label) * (tensorflow.keras.backend.log(keras.backend.abs(label)) / tensorflow.keras.backend.log(ten)))
 
-
-# 1:1 softsign based input activation - scales down our numbers so that they are within domain of tanh activation
+# 1:1 softsign based input activation - scales down our numbers so that they are within reasonable domain of tanh
 def custom_in_activation(x):
     return 2 * x / keras.backend.cast((1e6) + tensorflow.math.abs(x), keras.backend.floatx())
 
@@ -35,7 +34,7 @@ def activation_inverse(x):
 
 def activation_inverse_tensor(x):
     op = -1 * tensorflow.math.sign(x)
-    return op * (1e6) * x / keras.backend.cast((x + (1 * op)), keras.backend.floatx())
+    return op * (1e6) * x / keras.backend.cast((x + (1 * op)) + 1e-6, keras.backend.floatx())
 
 # no custom out activation as of rn
 def custom_out_activation(x):
@@ -159,7 +158,7 @@ def pctpredict(nn, inputs, total):
 def plotTraining(history):
     pyplot.title('Learning Curves')
     pyplot.xlabel('Epoch')
-    pyplot.ylabel('MSE (Loss)')
+    pyplot.ylabel('Loss')
     pyplot.plot(history.history['loss'], label='Training', color=MAIN_COLOR)
     pyplot.plot(history.history['val_loss'], label='Validation', color=SECONDARY_COLOR)
     pyplot.legend()

@@ -1,0 +1,18 @@
+----- Training Neural Net #28072021-173503 with shape (12, 7, 3) -----
+Pre-training Loss: 75.01025390625
+Network reached epoch #5. Loss: 5.308526039123535
+Network reached epoch #10. Loss: 5.240048408508301
+Network reached epoch #15. Loss: 5.177952289581299
+Network reached epoch #20. Loss: 5.137033462524414
+Network reached epoch #25. Loss: 5.067214012145996
+Network reached epoch #30. Loss: 5.027726173400879
+Network reached epoch #35. Loss: 4.980377674102783
+Network reached epoch #40. Loss: 4.966444492340088
+Network reached epoch #45. Loss: 4.934433937072754
+Network reached epoch #50. Loss: 4.9311017990112305
+Network reached epoch #55. Loss: 4.929592132568359
+Network reached epoch #60. Loss: 4.94082498550415
+Network reached epoch #65. Loss: 4.894225597381592
+Network reached epoch #70. Loss: 4.884024620056152
+Ended (slow improvement) at epoch 70
+----------- [!] Training Complete - Final Loss: 4.884024620056152 -----------

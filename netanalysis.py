@@ -38,7 +38,7 @@ def year_analysis():
             
             x, y = [], []
             # Make a prediction
-            for j in range(0, 50, 2):
+            for j in range(0, 100, 1):
                 x.append(j)
                 inputs = []
                 orgInputs[-1] = j

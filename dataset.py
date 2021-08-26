@@ -61,7 +61,7 @@ def generate_dataset(startingYear):
     for ein in eins:
         try:
             orgInput, label = ein_to_training_data(ein, startingYear)
-            if (label >= 10000):
+            if (abs(label) >= INSIG_CONST):
                 trainingData["inputs"].append(orgInput)
                 # trainingData["labels"].append(scalar_activation(label))
                 trainingData["labels"].append(label)
@@ -97,7 +97,7 @@ def ein_to_training_data(ein, startingYear):
     # contributions, prior year (line 13)
     orgInput.append(utils.zeroint(org[72]))
     # years in existence
-    yearsSince = years_in_existence(org)
+    yearsSince = years_in_existence(org) * 10000
     if yearsSince < 0:
         raise Exception("Cannot have existed for negative years") 
     orgInput.append(yearsSince)
